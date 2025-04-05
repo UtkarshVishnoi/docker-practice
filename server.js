@@ -6,8 +6,7 @@ import cors from "cors"
 const app = express();
 const PORT = 5000;
 
-const filePath = path.join(import.meta.dirname, 'game-scores.json');
-
+const filePath = path.join(import.meta.dirname, "data" , 'game-scores.json');
 app.use(cors())
 app.use(express.json());
 
@@ -36,6 +35,6 @@ app.post('/update-score', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0" ,() => {
+  console.log(`Server is running on port ${PORT} on 0.0.0.0`);
 });

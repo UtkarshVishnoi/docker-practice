@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tic-tac-toe-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tic-tac-toe
+  template:
+    metadata:
+      labels:
+        app: tic-tac-toe
+    spec:
+      containers:
+      - name: tic-tac-toe-container
+        image: utkarshvishnoi2004/tic-tac-toe:v1
+        ports:
+        - containerPort: 5173
+        - containerPort: 5000
+        command: ["sh", "-c", "concurrently 'npm run dev' 'node server.js'"]
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "400m"
+            memory: "2560Mi"
+        volumeMounts:
+        - name: tic-tac-toe-data
+          mountPath: /usr/src/app/data
+      volumes:
+      - name: tic-tac-toe-data
+        persistentVolumeClaim:
+          claimName: tic-tac-toe-pvc
