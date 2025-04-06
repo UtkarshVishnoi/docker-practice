@@ -35,20 +35,20 @@ A full-stack Tic-Tac-Toe game built with **React (frontend)** and **Node.js (bac
 ## 🚀 How to Run
 
 ### 1. **Start Minikube**
-\`\`\`bash
+```bash
 minikube start --nodes 2
-\`\`\`
+```
 
 ### 2. **Apply Kubernetes Resources**
-\`\`\`bash
+```bash
 kubectl apply -f ./k8s
-\`\`\`
+```
 
 
 ### 3. **Port Forwarding**
-\`\`\`bash
+```bash
 kubectl port-forward service/tic-tac-toe-service 5173:5173 5000:5000
-\`\`\`
+```
 
 ### 4. **Access the App**
 
